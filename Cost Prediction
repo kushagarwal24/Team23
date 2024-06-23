@@ -1,0 +1,6 @@
+cost_per_cpu_hour = 0.05  # Example cost rate
+new_data['Cost'] = new_data['Value'] * cost_per_cpu_hour
+
+# Total cost prediction
+total_cost = new_data['Cost'].sum()
+print(f"Estimated Total Cost: ${total_cost:.2f}")
