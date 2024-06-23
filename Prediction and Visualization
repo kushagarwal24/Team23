@@ -1,0 +1,15 @@
+import matplotlib.pyplot as plt
+
+# Predict on new data
+new_data = get_metric_data('i-0123456789abcdef0', 'CPUUtilization', '2023-01-08T00:00:00Z', '2023-01-09T00:00:00Z')
+new_data['Prediction'] = model.predict(new_data[['Value']])
+
+# Visualization
+plt.figure(figsize=(10, 6))
+plt.plot(new_data['Timestamp'], new_data['Value'], label='CPU Utilization')
+plt.scatter(new_data[new_data['Prediction'] == 1]['Timestamp'], new_data[new_data['Prediction'] == 1]['Value'], color='red', label='Predicted Issue')
+plt.xlabel('Time')
+plt.ylabel('CPU Utilization')
+plt.title('Server Health Prediction')
+plt.legend()
+plt.show()
